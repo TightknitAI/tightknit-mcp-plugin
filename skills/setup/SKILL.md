@@ -39,7 +39,7 @@ OAuth sign-in.
    configuration, so in Claude Code the fix is usually to load the plugin:
    ```text
    /plugin marketplace add TightknitAI/tightknit-mcp-plugin
-   /plugin install tightknit@tightknit-plugin
+   /plugin install tightknit@tightknit
    /reload-plugins
    ```
    Without the plugin, add the server directly:

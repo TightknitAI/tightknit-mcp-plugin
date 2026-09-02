@@ -7,7 +7,7 @@ the single source; every directory below points back at it.
 
 - [ ] Make the GitHub repository public. Marketplace installs clone it anonymously.
 - [ ] Confirm the MCP server is out of pilot, or that the README's pilot note is still accurate.
-- [ ] Add a logo (`assets/logo.svg`) and reference it from the Cursor manifest (`logo`) and the Codex manifest (`interface.logo`). Both are optional but the directories show it.
+- [x] Logo: `assets/logo.png` (the rope-heart mark, 575x575, transparent) is referenced from the Cursor manifest (`logo`) and the Codex manifest (`interface.logo`); the wordmarks in `assets/` are for READMEs and listings. These are the published brand assets; swap in the source SVG from the design team if one exists.
 - [ ] Confirm `privacyPolicyURL` and `termsOfServiceURL` in `.codex-plugin/plugin.json` resolve.
 - [ ] Decide whether the server should log a consumer header (PostHog sends `x-posthog-mcp-consumer: plugin`, Figma a bundle version). If so, add a `headers` block to `.mcp.json` and relax the validator.
 - [ ] Tag `v0.1.0`.

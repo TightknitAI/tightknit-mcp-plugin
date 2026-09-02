@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.png" alt="Tightknit" width="96" height="96"></p>
+
 # Tightknit Plugin for Claude Code
 
 This repository provides the official Claude Code plugin that connects Claude to the **[Tightknit MCP Server](https://docs.tightknit.ai/integrations/mcp)**, so Claude can help you run your Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, the content library, branding, and analytics.
@@ -57,7 +59,7 @@ The `community-manager` skill loads whenever a conversation touches Tightknit. I
 ### 2. Install the plugin
 
 ```
-/plugin install tightknit@tightknit-plugin
+/plugin install tightknit@tightknit
 ```
 
 ### 3. Reload plugins
@@ -72,7 +74,7 @@ This loads the plugin and starts the MCP server without restarting Claude Code.
 
 Run `/mcp`, select **tightknit**, and choose **Authenticate**. A browser window opens on the Tightknit sign-in; click **Allow** to complete OAuth. Then run `/tightknit:setup` to confirm Claude can see your communities.
 
-Pull updates with `/plugin marketplace update tightknit-plugin`.
+Pull updates with `/plugin marketplace update tightknit`.
 
 ## Other clients
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "tightknit-plugin",
+  "name": "tightknit",
   "owner": {
     "name": "Tightknit",
     "email": "support@tightknit.ai",

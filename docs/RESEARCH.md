@@ -37,7 +37,7 @@ Manifests and wiring
 2. **`.claude-plugin/plugin.json` is the single source of truth** for name and version; set `$schema` for editor checks; list `mcpServers` and `skills` paths explicitly. Do not repeat `version` in the marketplace entry (Claude Code silently prefers plugin.json).
 3. **Remote MCP over Streamable HTTP with OAuth, nothing else in `.mcp.json`.** No API keys, no env, no stdio wrappers. Slack pins a client id; PostHog and Figma add a consumer/version header so the server can attribute traffic. Vercel's `note` key is nonstandard.
 4. **Ship the other clients' manifests from day one** (`.cursor-plugin/plugin.json`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`) and a `server.json` for the MCP Registry. Keep their versions in lockstep with a script (Slack's `sync_versions.py`), not by hand.
-5. **Marketplace name must not collide** with one your users already have registered; each user can hold one marketplace per name, and Anthropic reserves several. Vendors use `<vendor>-plugin` or `<vendor>-plugin-marketplace`.
+5. **Own the plain vendor name for the marketplace.** Each user can hold one marketplace per name and Anthropic reserves several, so a customer-facing repo should claim `<vendor>` and internal catalogs should move aside (ours is `tightknit-internal`). Vendors that picked `<vendor>-plugin` or `<vendor>-plugin-marketplace` give every customer a longer install command for no benefit.
 
 Skills
 

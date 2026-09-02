@@ -59,7 +59,7 @@ This tests the real installation flow: clone, copy to cache, load from cache.
    ```
 2. Install the plugin:
    ```
-   /plugin install tightknit@tightknit-plugin
+   /plugin install tightknit@tightknit
    ```
 3. Verify skills and MCP server load as described above.
 

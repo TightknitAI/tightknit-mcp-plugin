@@ -38,6 +38,8 @@
       "How is my community doing this month?",
       "Schedule a community AMA next Thursday at 11am PT",
       "Set up an onboarding journey with a badge for new members"
-    ]
+    ],
+    "brandColor": "#0ea5e9",
+    "logo": "./assets/logo.png"
   }
 }
