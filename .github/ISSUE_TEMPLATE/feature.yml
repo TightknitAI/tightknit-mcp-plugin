@@ -1,0 +1,15 @@
+name: Feature request
+description: A workflow the plugin should cover, or a tool the MCP server should expose.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: The workflow
+      description: What would you type, and what should happen?
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How you do it today

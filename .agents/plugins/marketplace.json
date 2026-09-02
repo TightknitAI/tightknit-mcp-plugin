@@ -1,0 +1,21 @@
+{
+  "name": "tightknit",
+  "interface": {
+    "displayName": "Tightknit"
+  },
+  "plugins": [
+    {
+      "name": "tightknit",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "description": "Tightknit MCP server integration for Codex. Manage community events, journeys, awards, feeds, members, groups, polls, content, branding, and analytics.",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

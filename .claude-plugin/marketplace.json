@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "tightknit-plugin",
+  "owner": {
+    "name": "Tightknit",
+    "email": "support@tightknit.ai",
+    "url": "https://tightknit.ai"
+  },
+  "metadata": {
+    "description": "Official Tightknit plugin for Claude Code and Claude Cowork."
+  },
+  "plugins": [
+    {
+      "name": "tightknit",
+      "source": "./",
+      "description": "Tightknit MCP server integration for Claude. Manage community events, onboarding journeys, awards, feeds, members, groups, polls, content, branding, and analytics from Claude Code and Claude Cowork.",
+      "category": "productivity",
+      "homepage": "https://docs.tightknit.ai/integrations/mcp",
+      "keywords": ["tightknit", "community", "slack", "events", "gamification", "mcp"]
+    }
+  ]
+}

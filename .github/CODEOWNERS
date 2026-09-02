@@ -1,0 +1,6 @@
+# Every path needs an owner who is pinged on PRs.
+*                       @zhawtof
+
+/.mcp.json              @zhawtof
+/.claude-plugin/        @zhawtof
+/skills/                @zhawtof

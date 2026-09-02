@@ -1,0 +1,181 @@
+{
+  "_comment": "Tool names published by the Tightknit MCP server, grouped as on https://docs.tightknit.ai/integrations/mcp. scripts/validate.mjs checks that every tool a skill references is listed here. Update this file when the server adds or renames tools. `non_tool_identifiers` lists snake_case values (milestone actions, enum members) that look like tool names but are not, so the validator skips them.",
+  "source": "https://docs.tightknit.ai/integrations/mcp",
+  "tools": {
+    "communities": [
+      "list_tenants"
+    ],
+    "events": [
+      "list_events",
+      "get_event",
+      "list_event_attendees",
+      "create_event",
+      "edit_event",
+      "delete_event"
+    ],
+    "activity": [
+      "list_activities"
+    ],
+    "slack": [
+      "list_slack_channels",
+      "activate_slack_channel"
+    ],
+    "analytics": [
+      "get_community_analytics"
+    ],
+    "polls": [
+      "list_polls",
+      "get_poll",
+      "create_poll",
+      "update_poll",
+      "delete_poll"
+    ],
+    "members": [
+      "list_members",
+      "list_profile_fields",
+      "edit_profile_field",
+      "create_member",
+      "set_member_teammate",
+      "deactivate_member"
+    ],
+    "posts": [
+      "list_posts",
+      "get_post",
+      "get_post_comments",
+      "edit_post_content",
+      "set_post_published",
+      "set_comment_published"
+    ],
+    "search": [
+      "search_posts",
+      "search_comments"
+    ],
+    "feeds": [
+      "list_feeds",
+      "get_feed",
+      "create_feed",
+      "update_feed",
+      "archive_feed",
+      "unarchive_feed"
+    ],
+    "groups": [
+      "list_groups",
+      "get_group",
+      "list_group_memberships",
+      "create_group",
+      "edit_group",
+      "add_group_members",
+      "remove_group_members",
+      "delete_group"
+    ],
+    "site": [
+      "get_site",
+      "create_site",
+      "edit_site",
+      "edit_site_pages"
+    ],
+    "slack_settings": [
+      "get_slack_community_settings",
+      "edit_slack_community_settings"
+    ],
+    "onboarding": [
+      "get_community_onboarding_settings",
+      "edit_community_onboarding_settings"
+    ],
+    "journeys": [
+      "list_journeys",
+      "get_journey",
+      "get_member_journey_progress",
+      "create_journey",
+      "add_milestone",
+      "edit_journey",
+      "edit_milestone",
+      "delete_milestone",
+      "delete_journey"
+    ],
+    "awards": [
+      "list_awards",
+      "list_award_assignments",
+      "create_award",
+      "edit_award",
+      "give_award",
+      "delete_award"
+    ],
+    "content_library": [
+      "list_content_collections",
+      "create_content_collection",
+      "edit_content_collection",
+      "set_content_collection_tag_groups",
+      "delete_content_collection",
+      "list_content_resources",
+      "create_content_resource",
+      "edit_content_resource",
+      "set_content_resource_tags",
+      "delete_content_resource"
+    ],
+    "tags": [
+      "list_tags",
+      "create_tag_group",
+      "edit_tag_group",
+      "delete_tag_group",
+      "create_tag",
+      "edit_tag",
+      "move_tag",
+      "delete_tag"
+    ],
+    "fonts": [
+      "list_custom_font_families",
+      "create_custom_font_family",
+      "add_custom_font_face",
+      "delete_custom_font_face",
+      "delete_custom_font_family"
+    ],
+    "branding": [
+      "list_branding_sets",
+      "create_branding_set",
+      "edit_branding_set",
+      "set_active_site_branding_set",
+      "delete_branding_set"
+    ],
+    "files": [
+      "prepare_file_upload"
+    ],
+    "feedback": [
+      "submit_feedback"
+    ]
+  },
+  "destructive": [
+    "delete_event",
+    "delete_poll",
+    "create_member",
+    "remove_group_members",
+    "delete_group",
+    "delete_milestone",
+    "delete_journey",
+    "delete_award",
+    "delete_content_collection",
+    "delete_content_resource",
+    "delete_tag_group",
+    "delete_tag",
+    "delete_custom_font_face",
+    "delete_custom_font_family",
+    "delete_branding_set"
+  ],
+  "expensive": [
+    "search_posts",
+    "search_comments",
+    "list_activities",
+    "get_community_analytics",
+    "give_award",
+    "add_group_members",
+    "prepare_file_upload",
+    "delete_group",
+    "delete_journey",
+    "delete_event",
+    "delete_award",
+    "remove_group_members"
+  ],
+  "non_tool_identifiers": [
+    "update_slack_profile_photo"
+  ]
+}

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Tightknit support
+    url: mailto:support@tightknit.ai
+    about: Account access, joining the MCP pilot, or anything about your community rather than this plugin.
+  - name: Tightknit MCP documentation
+    url: https://docs.tightknit.ai/integrations/mcp
+    about: Server URL, available tools, rate limits, and troubleshooting.

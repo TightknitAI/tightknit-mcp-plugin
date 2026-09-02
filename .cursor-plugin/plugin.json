@@ -1,0 +1,23 @@
+{
+  "name": "tightknit",
+  "displayName": "Tightknit",
+  "version": "0.1.0",
+  "description": "Manage your Tightknit community from Cursor: events, onboarding journeys, awards, feeds, members, groups, polls, content, branding, and analytics through the hosted Tightknit MCP server.",
+  "author": {
+    "name": "Tightknit",
+    "email": "support@tightknit.ai"
+  },
+  "homepage": "https://docs.tightknit.ai/integrations/mcp",
+  "repository": "https://github.com/TightknitAI/tightknit-mcp-plugin",
+  "license": "MIT",
+  "keywords": [
+    "tightknit",
+    "community",
+    "slack",
+    "events",
+    "gamification",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

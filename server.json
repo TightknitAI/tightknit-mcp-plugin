@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.tightknitai/tightknit-mcp",
+  "title": "Tightknit",
+  "description": "Manage a Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, content library, branding, and analytics.",
+  "repository": {
+    "url": "https://github.com/TightknitAI/tightknit-mcp-plugin.git",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "websiteUrl": "https://docs.tightknit.ai/integrations/mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.tightknit.ai/mcp"
+    }
+  ]
+}

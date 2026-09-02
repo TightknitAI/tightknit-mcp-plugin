@@ -1,0 +1,43 @@
+{
+  "name": "tightknit",
+  "version": "0.1.0",
+  "description": "Manage your Tightknit community from Codex: events, onboarding journeys, awards, feeds, members, groups, polls, content, branding, and analytics through the hosted Tightknit MCP server.",
+  "author": {
+    "name": "Tightknit",
+    "email": "support@tightknit.ai",
+    "url": "https://tightknit.ai"
+  },
+  "homepage": "https://docs.tightknit.ai/integrations/mcp",
+  "repository": "https://github.com/TightknitAI/tightknit-mcp-plugin",
+  "license": "MIT",
+  "keywords": [
+    "tightknit",
+    "community",
+    "slack",
+    "events",
+    "gamification",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Tightknit",
+    "shortDescription": "Manage your Slack-native community",
+    "longDescription": "Run your Tightknit community from Codex. Create and publish events, build onboarding journeys with milestones and awards, manage feeds, members, and groups, run polls, curate the content library, and read engagement analytics, all through the hosted Tightknit MCP server.",
+    "developerName": "Tightknit",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://tightknit.ai",
+    "privacyPolicyURL": "https://tightknit.ai/privacy",
+    "termsOfServiceURL": "https://tightknit.ai/terms",
+    "defaultPrompt": [
+      "How is my community doing this month?",
+      "Schedule a community AMA next Thursday at 11am PT",
+      "Set up an onboarding journey with a badge for new members"
+    ]
+  }
+}

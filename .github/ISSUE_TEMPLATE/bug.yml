@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in the plugin, a skill, or the MCP connection did not work.
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - MCP connection or authentication
+        - A skill or slash command
+        - Installation or manifests
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Client and version
+      placeholder: Claude Code 2.1.x / Cursor / Codex / Claude Desktop
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you asked, what the agent did, and what you expected. Redact member names and anything private.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
