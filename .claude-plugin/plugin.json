@@ -10,7 +10,6 @@
     "url": "https://tightknit.ai"
   },
   "homepage": "https://docs.tightknit.ai/integrations/mcp",
-  "privacyPolicyUrl": "https://tightknit.ai/legal/privacy-policy",
   "repository": "https://github.com/TightknitAI/tightknit-mcp-plugin",
   "license": "MIT",
   "keywords": [
