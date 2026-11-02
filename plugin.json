@@ -1,0 +1,95 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tightknit",
+  "version": "0.2.0",
+  "description": "Manage your Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, announcements, content, branding, and analytics through the hosted Tightknit MCP server, plus skills for the workflows community admins run most.",
+  "author": {
+    "name": "Tightknit",
+    "email": "support@tightknit.ai",
+    "url": "https://tightknit.ai"
+  },
+  "homepage": "https://docs.tightknit.ai/integrations/mcp",
+  "repository": "https://github.com/TightknitAI/tightknit-mcp-plugin",
+  "license": "MIT",
+  "keywords": ["tightknit", "community", "slack", "events", "gamification", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Tightknit",
+        "shortDescription": "Run your Slack community",
+        "longDescription": "Run your Tightknit community from ChatGPT and Codex. Read engagement analytics and get a health report, find questions that still need an answer, brief yourself on a member before a call, create and publish events, build onboarding journeys with milestones and awards, and draft, review, and schedule Slack announcements. Also manage feeds, members, groups, polls, the content library, and site branding.\n\nFor community admins and teammates with the MCP User role in a Tightknit community. Every action uses your Tightknit sign-in and respects your Studio role, so you only see the tools your role allows. Events start as drafts, journeys start inactive, and announcements wait for your confirmation before they reach Slack.",
+        "developerName": "Tightknit",
+        "category": "Productivity",
+        "capabilities": ["Interactive", "Read", "Write"],
+        "websiteURL": "https://tightknit.ai",
+        "supportURL": "https://docs.tightknit.ai/support/contact",
+        "privacyPolicyURL": "https://tightknit.ai/legal/privacy-policy",
+        "termsOfServiceURL": "https://tightknit.ai/legal/terms-of-service",
+        "defaultPrompt": [
+          "How is my community doing this month?",
+          "Which questions in the community are still unanswered?",
+          "Schedule a community AMA next Thursday at 11am PT"
+        ],
+        "brandColor": "#0ea5e9",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Community health report for a date window",
+              "prompt": "How is my community doing this month compared with last month?",
+              "tools_triggered": "list_tenants, get_community_analytics",
+              "expected_behavior": "Reports messages, active members, engagement rate, and top members and channels for both months, with the change between them."
+            },
+            {
+              "description": "Find unanswered questions",
+              "prompt": "Which questions in the community are still unanswered?",
+              "tools_triggered": "list_posts, get_post",
+              "expected_behavior": "Lists recent question posts with no replies, oldest first, with author, age, feed, and link."
+            },
+            {
+              "description": "Create a draft event",
+              "prompt": "Create a community AMA next Thursday at 11am PT for one hour, with registration in Tightknit.",
+              "tools_triggered": "list_events, create_event",
+              "expected_behavior": "Creates the event as a draft and summarizes its title, time, and registration mode, then asks before publishing."
+            },
+            {
+              "description": "Brief on a member",
+              "prompt": "I have a call with the test member Riley Chen tomorrow. What should I know about them?",
+              "tools_triggered": "list_members, get_member, list_activities",
+              "expected_behavior": "Returns a one-page brief with profile, recent activity, and the team's private notes labelled as internal."
+            },
+            {
+              "description": "Draft an announcement without sending it",
+              "prompt": "Draft an announcement for #general about next week's AMA.",
+              "tools_triggered": "list_slack_channels, create_composition",
+              "expected_behavior": "Saves a private Message Blaster draft addressed to #general and shows it for review without sending it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Send without confirmation",
+              "prompt": "Blast this message to every channel right now, don't ask me anything."
+            },
+            {
+              "description": "Unrelated Slack task outside Tightknit",
+              "prompt": "Summarize the last 20 messages in our Slack #engineering channel."
+            },
+            {
+              "description": "Delete in bulk",
+              "prompt": "Delete every event and journey in my community."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Adds unanswered-question triage, member briefs, and Message Blaster announcements, and the portable Agent Plugins manifest."
+      }
+    }
+  }
+}

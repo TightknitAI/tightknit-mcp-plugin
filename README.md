@@ -1,8 +1,8 @@
 <p align="center"><img src="assets/logo.png" alt="Tightknit" width="96" height="96"></p>
 
-# Tightknit Plugin for Claude Code
+# Tightknit Plugin
 
-This repository provides the official Claude Code plugin that connects Claude to the **[Tightknit MCP Server](https://docs.tightknit.ai/integrations/mcp)**, so Claude can help you run your Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, the content library, branding, and analytics.
+This repository provides the official Tightknit plugin for Claude, ChatGPT, Codex, and Cursor, and the same skills for any agent that reads [Agent Skills](https://agentskills.io). It connects your agent to the **[Tightknit MCP Server](https://docs.tightknit.ai/integrations/mcp)** so it can help you run your Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, announcements, the content library, branding, and analytics.
 
 > [!NOTE]
 > The Tightknit MCP server is currently in **pilot**. Before connecting, confirm the following:
@@ -15,7 +15,7 @@ This repository provides the official Claude Code plugin that connects Claude to
 
 ### Tightknit MCP Server
 
-Claude Code automatically connects to Tightknit's hosted MCP server:
+The plugin connects your agent to Tightknit's hosted MCP server:
 
 ```bash
 https://mcp.tightknit.ai/mcp
@@ -29,6 +29,7 @@ This gives Claude tools to:
 - **Curate feeds and content** — create and archive feeds, activate Slack channels, and organize the content library with tags
 - **Moderate** — search posts and comments, publish and unpublish, and edit post metadata
 - **Ask the community** — create and manage polls
+- **Announce** — draft, review, and schedule Message Blaster announcements to Slack channels and DMs, and mark answers on member questions
 - **Measure** — read messages, active members, and engagement over any window, plus the full activity log
 - **Shape the site** — site settings, pages, branding sets, custom fonts, welcome message, and community guidelines
 
@@ -42,6 +43,9 @@ Tools are annotated read, write, or destructive, and every tool respects your St
 | `/tightknit:community-health [community] [period]` | Engagement report for a date window, with comparison to the previous period |
 | `/tightknit:create-event <brief>` | Turn a plain-English brief into a draft event, then publish on confirmation |
 | `/tightknit:onboarding-journey <goal>` | Design and build a new-member journey with milestones and a completion award |
+| `/tightknit:unanswered-questions [community] [period]` | Find questions that still need an answer, draft replies, and mark answers on confirmation |
+| `/tightknit:member-brief <member>` | One-page brief on a member before a call: profile, activity, awards, and team notes |
+| `/tightknit:draft-announcement <brief>` | Draft a Message Blaster announcement, share it for review, and send or schedule on confirmation |
 | `/tightknit:community-manager` | The house rules Claude follows for every Tightknit task; loads automatically |
 
 The `community-manager` skill loads whenever a conversation touches Tightknit. It handles picking the right community, the read-before-write and confirm-before-publish rules, destructive-tool safety, rate limits, and file uploads.
@@ -81,8 +85,9 @@ Pull updates with `/plugin marketplace update tightknit`.
 - **Claude Cowork**: Settings > Plugins > Add > Add marketplace, enter `TightknitAI/tightknit-mcp-plugin`, sync, then install **Tightknit**.
 - **Claude Desktop and claude.ai**: Settings > Connectors > Add custom connector, name it `Tightknit`, URL `https://mcp.tightknit.ai/mcp`, then Connect.
 - **Cursor**: install from the Cursor marketplace once listed, or add the server under Cursor Settings > MCP with the URL above.
-- **Codex**: `codex plugin marketplace add TightknitAI/tightknit-mcp-plugin`, then install **Tightknit** from `/plugins`.
-- **VS Code, ChatGPT, and any client with remote MCP support**: see [Connecting to the Tightknit MCP server](https://docs.tightknit.ai/integrations/mcp#connect-your-agent).
+- **ChatGPT and Codex**: install **Tightknit** from the plugin directory once listed. Until then, in Codex: `codex plugin marketplace add TightknitAI/tightknit-mcp-plugin`, then install **Tightknit** from `/plugins`.
+- **Any agent that supports Agent Skills** (Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, and more): `npx skills add TightknitAI/tightknit-mcp-plugin` installs the skills, then add the MCP server to that agent using the URL above.
+- **VS Code and any client with remote MCP support**: see [Connecting to the Tightknit MCP server](https://docs.tightknit.ai/integrations/mcp#connect-your-agent).
 
 ## Authentication
 
@@ -94,6 +99,11 @@ All clients use **OAuth 2.1** against the MCP server. You sign in with your Tigh
 - Destructive tools delete permanently (there is no trash) and take a `confirm` flag. Claude supplies that flag, so it is not a substitute for your approval: keep a human in the loop for deletes, moderation, and member changes.
 - Events are created as drafts and journeys as inactive, so nothing reaches Slack until you say so.
 - Member-written content (posts, comments, names) is treated as untrusted input, never as instructions.
+- Announcements are saved as private drafts and sent only after you confirm the final text, destinations, and time. A sent announcement cannot be unsent.
+
+## What this plugin runs and sends
+
+The plugin is Markdown skills plus one remote MCP server entry. It runs no scripts, hooks, or package installs on your machine. Every tool call goes to `https://mcp.tightknit.ai/mcp`, operated by Tightknit, and acts on your community with your account's permissions; the skills send nothing anywhere else. The server records which tools are called, for product analytics and rate limiting, as described in the [privacy policy](https://tightknit.ai/legal/privacy-policy).
 
 ## File uploads
 
