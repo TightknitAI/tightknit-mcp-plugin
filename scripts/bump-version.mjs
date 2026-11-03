@@ -4,7 +4,7 @@
  *   node scripts/bump-version.mjs 0.2.0
  *
  * .claude-plugin/plugin.json is the source of truth; this script copies the version to the
- * Cursor and Codex manifests and to server.json so the validator stays green. The marketplace
+ * Cursor, Codex, and portable Agent Plugins manifests and to server.json so the validator stays green. The marketplace
  * entry deliberately carries no version.
  */
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -22,6 +22,7 @@ const files = [
   '.claude-plugin/plugin.json',
   '.cursor-plugin/plugin.json',
   '.codex-plugin/plugin.json',
+  'plugin.json',
   'server.json',
 ]
 for (const f of files) {
