@@ -14,9 +14,9 @@ the single source; every directory below points back at it.
 
 ## Before the first public release
 
-- [ ] Make the GitHub repository public. Marketplace installs, the skills CLI, and the Claude
+- [x] Make the GitHub repository public. Marketplace installs, the skills CLI, and the Claude
   directory all read it anonymously.
-- [ ] Confirm the MCP server is out of pilot, or that the README's pilot note is still accurate.
+- [x] Confirm the MCP server is out of pilot, or that the README's pilot note is still accurate.
 - [x] Logo: `assets/logo.png` (the rope-heart mark, 575x575, transparent) is the icon in every
   manifest; the wordmarks in `assets/` are for READMEs and listings.
 - [x] Listing URLs resolve: privacy `https://tightknit.ai/legal/privacy-policy`, terms

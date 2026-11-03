@@ -5,9 +5,7 @@
 This repository provides the official Tightknit plugin for Claude, ChatGPT, Codex, and Cursor, and the same skills for any agent that reads [Agent Skills](https://agentskills.io). It connects your agent to the **[Tightknit MCP Server](https://docs.tightknit.ai/integrations/mcp)** so it can help you run your Tightknit community: events, onboarding journeys, awards, feeds, members, groups, polls, announcements, the content library, branding, and analytics.
 
 > [!NOTE]
-> The Tightknit MCP server is currently in **pilot**. Before connecting, confirm the following:
->
-> **Role**: You must be an Admin, or hold the **MCP User** role, in a community that is in the pilot. Contact [support@tightknit.ai](mailto:support@tightknit.ai) to join.
+> **Role**: You must be an Admin, or hold the **MCP User** role, in your Tightknit community. Ask an admin of your community to grant it, or contact [support@tightknit.ai](mailto:support@tightknit.ai).
 
 ---
 
@@ -115,7 +113,7 @@ Per person, per minute: 120 reads, 60 writes, 20 expensive calls (search, activi
 
 ## Troubleshooting
 
-- **Signed in but no tools**: your community is not in the pilot, or you need the **MCP User** role. Ask an admin or [support](mailto:support@tightknit.ai).
+- **Signed in but no tools**: you need the **MCP User** role, or your community's plan does not include MCP. Ask an admin or [support](mailto:support@tightknit.ai).
 - **The same error on every attempt**: remove the server or connector and add it again; some clients cache a failed handshake.
 - **A client asks for an Auth URL or client secret**: leave the OAuth fields blank. The server publishes its own metadata and clients register automatically.
 
