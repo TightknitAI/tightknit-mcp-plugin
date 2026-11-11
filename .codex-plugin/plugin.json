@@ -1,6 +1,6 @@
 {
   "name": "tightknit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Manage your Tightknit community from Codex: events, onboarding journeys, awards, feeds, members, groups, polls, content, branding, and analytics through the hosted Tightknit MCP server.",
   "author": {
     "name": "Tightknit",
@@ -32,14 +32,16 @@
       "Write"
     ],
     "websiteURL": "https://tightknit.ai",
-    "privacyPolicyURL": "https://tightknit.ai/privacy",
-    "termsOfServiceURL": "https://tightknit.ai/terms",
+    "supportURL": "https://docs.tightknit.ai/support/contact",
+    "privacyPolicyURL": "https://tightknit.ai/legal/privacy-policy",
+    "termsOfServiceURL": "https://tightknit.ai/legal/terms-of-service",
     "defaultPrompt": [
       "How is my community doing this month?",
       "Schedule a community AMA next Thursday at 11am PT",
       "Set up an onboarding journey with a badge for new members"
     ],
     "brandColor": "#0ea5e9",
+    "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png"
   }
 }

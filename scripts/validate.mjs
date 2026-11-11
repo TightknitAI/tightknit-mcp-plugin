@@ -4,8 +4,10 @@
  * CI runs the same thing, followed by `claude plugin validate .`.
  *
  * Checks:
- *  - every manifest parses, and name/version agree across Claude, Cursor, Codex, and server.json
- *  - .mcp.json points at the documented Tightknit MCP server URL
+ *  - every manifest parses, and name/version agree across Claude, Cursor, Codex, the portable
+ *    Agent Plugins manifest (plugin.json), and server.json
+ *  - .mcp.json and mcp.json point at the documented Tightknit MCP server URL
+ *  - plugin.json meets the OpenAI directory's listing limits and review test-case counts
  *  - the marketplace entry does not carry its own version (plugin.json is the source of truth)
  *  - every skill has frontmatter with a matching name and a usable description
  *  - every MCP tool a skill references exists in scripts/tool-catalog.json
@@ -43,6 +45,8 @@ const marketplace = readJSON(join(ROOT, '.claude-plugin', 'marketplace.json'))
 const mcp = readJSON(join(ROOT, '.mcp.json'))
 const cursor = readJSON(join(ROOT, '.cursor-plugin', 'plugin.json'))
 const codex = readJSON(join(ROOT, '.codex-plugin', 'plugin.json'))
+const portable = readJSON(join(ROOT, 'plugin.json'))
+const portableMcp = readJSON(join(ROOT, 'mcp.json'))
 const codexMarketplace = readJSON(join(ROOT, '.agents', 'plugins', 'marketplace.json'))
 const server = readJSON(join(ROOT, 'server.json'))
 const catalog = readJSON(join(ROOT, 'scripts', 'tool-catalog.json'))
@@ -98,6 +102,48 @@ for (const [label, m] of [['.cursor-plugin/plugin.json', cursor], ['.codex-plugi
   if (m.version !== version) err(label, `version ${m.version} != plugin.json ${version} — run: node scripts/bump-version.mjs ${version}`)
   if (m.mcpServers && typeof m.mcpServers === 'string' && !existsSync(resolve(ROOT, m.mcpServers))) err(label, `mcpServers path ${m.mcpServers} does not exist`)
   if (m.skills && typeof m.skills === 'string' && !existsSync(resolve(ROOT, m.skills))) err(label, `skills path ${m.skills} does not exist`)
+}
+if (portable) {
+  const f = 'plugin.json'
+  const catalogued = new Set(Object.values(catalog?.tools || {}).flat())
+  if (portable.name !== name) err(f, `name "${portable.name}" != .claude-plugin/plugin.json "${name}"`)
+  if (portable.version !== version) err(f, `version ${portable.version} != .claude-plugin/plugin.json ${version} — run: node scripts/bump-version.mjs ${version}`)
+  const oa = portable.extensions?.['com.openai']
+  const ui = oa?.interface
+  if (!ui) err(f, 'extensions["com.openai"].interface is required for the OpenAI directory listing')
+  else {
+    if (!ui.displayName || ui.displayName.length > 30) err(f, 'interface.displayName is required, 30 chars max')
+    if (!ui.shortDescription || ui.shortDescription.length > 30) err(f, 'interface.shortDescription is required, 30 chars max')
+    for (const k of ['websiteURL', 'supportURL', 'privacyPolicyURL', 'termsOfServiceURL']) {
+      if (!ui[k]?.startsWith('https://')) err(f, `interface.${k} must be an https URL (required for MCP review)`)
+    }
+    const prompts = [].concat(ui.defaultPrompt || [])
+    if (prompts.length > 3 || prompts.some(p => p.length > 128)) err(f, 'interface.defaultPrompt allows at most 3 prompts of 128 chars')
+    for (const k of ['composerIcon', 'logo']) if (ui[k] && !existsSync(resolve(ROOT, ui[k]))) err(f, `interface.${k} path ${ui[k]} does not exist`)
+  }
+  if (oa?.onboardingSkill && !existsSync(resolve(ROOT, oa.onboardingSkill))) err(f, `onboardingSkill path ${oa.onboardingSkill} does not exist`)
+  const cases = oa?.review?.test_cases
+  if (cases) {
+    if ((cases.positive || []).length !== 5) err(f, `review needs exactly 5 positive test cases, found ${(cases.positive || []).length}`)
+    if ((cases.negative || []).length !== 3) err(f, `review needs exactly 3 negative test cases, found ${(cases.negative || []).length}`)
+    for (const c of cases.positive || []) {
+      for (const t of String(c.tools_triggered || '').split(',').map(s => s.trim()).filter(Boolean)) {
+        if (!catalogued.has(t)) err(f, `test case "${c.description}" names tool "${t}", which is not in scripts/tool-catalog.json`)
+      }
+    }
+  }
+  if (oa?.review && ('test_credentials' in oa.review || 'reviewer_instructions' in oa.review)) err(f, 'reviewer credentials go in the OpenAI dashboard, never the package')
+}
+if (portableMcp) {
+  const f = 'mcp.json'
+  const servers = Object.entries(portableMcp.mcpServers || {})
+  if (servers.length !== 1) err(f, `expected exactly one MCP server (the OpenAI portal connects one per plugin), found ${servers.length}`)
+  for (const [k, s] of servers) {
+    if (s.type !== 'streamable-http') err(f, `${k}: type must be "streamable-http", found ${JSON.stringify(s.type)}`)
+    if (s.url !== MCP_URL) err(f, `${k}: url must be ${MCP_URL}`)
+    if (s.headers && Object.keys(s.headers).length) err(f, `${k}: public submission rejects non-empty headers`)
+    if (!mcp?.mcpServers?.[k]) err(f, `${k}: server name must match .mcp.json`)
+  }
 }
 if (codexMarketplace) {
   const e = (codexMarketplace.plugins || [])[0]

@@ -1,7 +1,7 @@
 {
   "name": "tightknit",
   "displayName": "Tightknit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Manage your Tightknit community from Cursor: events, onboarding journeys, awards, feeds, members, groups, polls, content, branding, and analytics through the hosted Tightknit MCP server.",
   "author": {
     "name": "Tightknit",

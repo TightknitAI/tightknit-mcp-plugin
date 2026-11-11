@@ -11,14 +11,23 @@
       "list_event_attendees",
       "create_event",
       "edit_event",
-      "delete_event"
+      "delete_event",
+      "add_event_registrants",
+      "edit_event_settings",
+      "get_event_settings",
+      "remove_event_registrants"
     ],
     "activity": [
       "list_activities"
     ],
     "slack": [
       "list_slack_channels",
-      "activate_slack_channel"
+      "activate_slack_channel",
+      "create_slack_channel",
+      "add_slack_channel_members",
+      "edit_slack_channel",
+      "list_bot_profiles",
+      "set_bot_sync_blocked"
     ],
     "analytics": [
       "get_community_analytics"
@@ -36,7 +45,13 @@
       "edit_profile_field",
       "create_member",
       "set_member_teammate",
-      "deactivate_member"
+      "deactivate_member",
+      "activate_member",
+      "create_member_note",
+      "delete_member_note",
+      "edit_member_note",
+      "get_member",
+      "list_member_notes"
     ],
     "posts": [
       "list_posts",
@@ -44,7 +59,13 @@
       "get_post_comments",
       "edit_post_content",
       "set_post_published",
-      "set_comment_published"
+      "set_comment_published",
+      "list_pinned_posts",
+      "publish_slack_message_to_site",
+      "remove_selected_answer",
+      "set_message_tags",
+      "set_selected_answer",
+      "set_slack_message_pin"
     ],
     "search": [
       "search_posts",
@@ -56,7 +77,10 @@
       "create_feed",
       "update_feed",
       "archive_feed",
-      "unarchive_feed"
+      "unarchive_feed",
+      "add_feed_members",
+      "list_feed_members",
+      "remove_feed_member"
     ],
     "groups": [
       "list_groups",
@@ -72,11 +96,21 @@
       "get_site",
       "create_site",
       "edit_site",
-      "edit_site_pages"
+      "edit_site_pages",
+      "activate_site",
+      "deactivate_site",
+      "edit_site_navigation_custom_links",
+      "get_login_marketing_panel",
+      "get_site_banner",
+      "get_site_navigation_custom_links",
+      "manage_login_marketing_panel",
+      "manage_site_banner"
     ],
     "slack_settings": [
       "get_slack_community_settings",
-      "edit_slack_community_settings"
+      "edit_slack_community_settings",
+      "edit_team_notification_settings",
+      "get_team_notification_settings"
     ],
     "onboarding": [
       "get_community_onboarding_settings",
@@ -91,7 +125,8 @@
       "edit_journey",
       "edit_milestone",
       "delete_milestone",
-      "delete_journey"
+      "delete_journey",
+      "list_journey_achievements"
     ],
     "awards": [
       "list_awards",
@@ -111,7 +146,9 @@
       "create_content_resource",
       "edit_content_resource",
       "set_content_resource_tags",
-      "delete_content_resource"
+      "delete_content_resource",
+      "reorder_content_collections",
+      "reorder_content_resources"
     ],
     "tags": [
       "list_tags",
@@ -142,6 +179,29 @@
     ],
     "feedback": [
       "submit_feedback"
+    ],
+    "message_blaster": [
+      "cancel_composition_schedule",
+      "create_composition_comment",
+      "create_composition",
+      "delete_composition_comment",
+      "delete_composition",
+      "deliver_composition",
+      "edit_composition_comment",
+      "edit_slack_message",
+      "get_composition",
+      "get_slack_message_send_options",
+      "get_slack_message",
+      "list_composition_comments",
+      "list_composition_versions",
+      "list_compositions",
+      "send_slack_message",
+      "set_composition_sharing",
+      "update_composition"
+    ],
+    "team": [
+      "get_teammate_email_domains",
+      "set_teammate_email_domains"
     ]
   },
   "destructive": [
@@ -159,7 +219,13 @@
     "delete_tag",
     "delete_custom_font_face",
     "delete_custom_font_family",
-    "delete_branding_set"
+    "delete_branding_set",
+    "remove_event_registrants",
+    "remove_feed_member",
+    "delete_member_note",
+    "delete_composition_comment",
+    "delete_composition",
+    "set_composition_sharing"
   ],
   "expensive": [
     "search_posts",
@@ -173,7 +239,17 @@
     "delete_journey",
     "delete_event",
     "delete_award",
-    "remove_group_members"
+    "remove_group_members",
+    "add_event_registrants",
+    "remove_event_registrants",
+    "add_feed_members",
+    "remove_feed_member",
+    "deliver_composition",
+    "get_slack_message_send_options",
+    "send_slack_message",
+    "set_composition_sharing",
+    "add_slack_channel_members",
+    "set_teammate_email_domains"
   ],
   "non_tool_identifiers": [
     "update_slack_profile_photo"
