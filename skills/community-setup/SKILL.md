@@ -165,8 +165,8 @@ surprised.
 
 1. `list_slack_channels`. Show public channels with `is_activated` and a one-line purpose
    where visible, plus how busy each is if the Slack connector is connected.
-2. Review the channel list against the principles in slack-basics.md section 2: about 5 or
-   6 channels, each with a real purpose, none overlapping. Point out overlaps ("#help and
+2. Review the channel list against the principles in slack-basics.md section 2: about 3 to
+   7 channels, each with a real purpose, none overlapping. Point out overlaps ("#help and
    #questions do the same job") and channels with no clear purpose, and suggest merging or
    archiving them in Slack. For an existing community, suggest changes gently and leave
    busy channels alone; see community-paths.md.

@@ -23,7 +23,7 @@ Several answers below depend on it.
 
 What matters is the number of channels and what each one is for, not their names:
 
-- **About 5 or 6 to start.** Many quiet channels make a new community feel empty and leave
+- **About 3 to 7 to start.** Many quiet channels make a new community feel empty and leave
   members unsure where to post; a few busy ones feel alive.
 - **Every channel has a real purpose** you can say in one line.
 - **No overlap.** A member should never wonder which of two channels a post belongs in. If
@@ -31,9 +31,9 @@ What matters is the number of channels and what each one is for, not their names
 - **Grow from use.** Add a channel when a topic keeps coming up somewhere else, and archive
   channels that go quiet rather than leaving them empty.
 
-Most communities start with channels for these purposes. Let the admin name them in their
-own style, and swap purposes to fit the community (product feedback or resources for a
-product community, for example):
+These are suggestions, not rules. Present them as a starting point, let the admin name
+channels in their own style, and swap purposes to fit the community (product feedback or
+resources for a product community, for example). Many communities start with channels for:
 
 | Purpose | For |
 | --- | --- |
@@ -44,8 +44,9 @@ product community, for example):
 | Questions and help | Support from the team and other members |
 | Events (optional) | Event announcements and discussion |
 
-When reviewing an existing channel list, check each channel against these principles and
-suggest merges or archives for overlaps and channels without a purpose.
+When reviewing an existing channel list, check it against these principles and suggest
+merges or archives for overlaps and channels without a purpose. If the admin prefers their
+own setup, go with it.
 
 ## 3. The workspace-wide channel and admin-only announcements
 
