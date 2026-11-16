@@ -44,7 +44,7 @@ claude --plugin-dir /path/to/tightknit-mcp-plugin
 ```
 
 Then verify:
-- `/help` — skills should appear as `/tightknit:setup`, `/tightknit:community-health`, `/tightknit:create-event`, `/tightknit:onboarding-journey`, `/tightknit:community-manager`
+- `/help` — skills should appear as `/tightknit:setup`, `/tightknit:community-health`, `/tightknit:create-event`, `/tightknit:onboarding-journey`, `/tightknit:import-events`, `/tightknit:give-award`, `/tightknit:brand-site`, `/tightknit:community-manager`
 - `/mcp` — MCP server `tightknit` should be listed; authenticate and confirm `list_tenants` works
 
 Use `/reload-plugins` to pick up changes without restarting the session.

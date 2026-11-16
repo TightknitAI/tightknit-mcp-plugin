@@ -123,3 +123,6 @@ Every id is opaque: take it from a listing tool, never construct one.
 - `community-health`: engagement report for a date window.
 - `create-event`: brief to published calendar event.
 - `onboarding-journey`: milestones plus a completion award for new members.
+- `import-events`: a list of events onto the community site's events page.
+- `give-award`: recognize one or many members with an award.
+- `brand-site`: site setup, branding sets, banner, and login page.

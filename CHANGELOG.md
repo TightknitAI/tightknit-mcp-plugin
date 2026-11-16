@@ -2,6 +2,15 @@
 
 All notable changes to this plugin are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the plugin follows semver.
 
+## [0.3.0] - 2026-11-16
+
+### Added
+
+- `import-events` skill: create a batch of events from a list, spreadsheet, or calendar and get them onto the community site's events page, including the events-page and scheduled-publish checks.
+- `give-award` skill: give an award to one or many members, check who already has it, and report skipped and failed recipients.
+- `brand-site` skill: site basics, images, branding sets prepared for review, published pages, the announcement banner, and the login page panel.
+- Trigger eval scenarios for the three new skills.
+
 ## [0.2.0] - 2026-11-02
 
 ### Added
