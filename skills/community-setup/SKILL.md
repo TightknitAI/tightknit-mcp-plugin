@@ -1,6 +1,6 @@
 ---
 name: community-setup
-description: Walk a new Tightknit admin through setting up their community end to end, one step at a time, asking questions as it goes. Covers branding, graphics and a custom domain (with ready-to-send messages for their IT and design teams), activating Slack channels, feeds and what every feed setting does, importing events, an onboarding journey and badge, the welcome message, and a final launch check. Use when the user says "set up Tightknit", "help me set up our community", "walk me through setup", "we just installed Tightknit", "get our community ready to launch", or "onboard me to Tightknit". To connect or authenticate the MCP server itself, use setup instead.
+description: Walk a new Tightknit admin through setting up their community end to end, one step at a time, asking questions as it goes. Covers Slack workspace basics (a short channel list, admin-only announcements, app install permissions), branding, graphics and a custom domain (with ready-to-send messages for their IT and design teams), activating Slack channels, feeds and what every feed setting does, importing events, an onboarding journey and badge, the welcome message, and a final launch check. Use when the user says "set up Tightknit", "help me set up our community", "walk me through setup", "we just installed Tightknit", "get our community ready to launch", or "onboard me to Tightknit". To connect or authenticate the MCP server itself, use setup instead.
 argument-hint: "[optional: the step to start or resume at, e.g. feeds]"
 user-invocable: true
 ---
@@ -34,7 +34,7 @@ Checklist to show:
 2. Branding                7. Events
 3. Graphics and domain     8. Onboarding journey and badge
 4. Your team in Tightknit  9. Welcome message and guidelines
-5. Slack channels         10. Launch check
+5. Slack and channels    10. Launch check
 ```
 
 ## Step 0: see what's already done
@@ -100,7 +100,22 @@ reported messages, journeys completed, and more).
    `get_team_notification_settings` and walk through which alerts to turn on. Save with
    `edit_team_notification_settings`.
 
-## Step 5: Slack channels
+## Step 5: Slack workspace and channels
+
+### 5a. Slack basics
+
+Explain: a few Slack settings make a community workspace feel organized and safe. Most are
+changed in Slack by a workspace Owner or Admin, not through Tightknit, so you walk them
+through and they tick each one off.
+
+Ask which Slack plan they're on, then go through
+[references/slack-basics.md](references/slack-basics.md) in order: keep to 5 or 6 channels,
+make `#announcements` admin-only (on Free, only one channel can be restricted), only admins
+can install apps, who can invite people, who can create channels, default channels, and
+channel descriptions. Skip the security section unless the community is for customers or
+partners. Track each as done or skipped for the launch check.
+
+### 5b. Activate channels
 
 Explain: activating a channel adds the Tightknit app to it, starts storing its messages so
 they count toward journeys and analytics, and creates a feed for it. Tightknit posts a short
@@ -109,13 +124,17 @@ second one if its feed is later made public. Mention this before activating so t
 surprised.
 
 1. `list_slack_channels`. Show public channels with `is_activated` and a one-line purpose
-   where visible. Recommend a starter set of 3 to 7 (for example announcements, introductions,
-   help or questions, general, events) and ask which to activate.
+   where visible. Recommend 5 or 6 starter channels (the set in slack-basics.md, adjusted to
+   the community) and ask which to activate. If they already have many, suggest which to
+   archive or merge in Slack rather than activating everything.
 2. Missing a channel they want? Offer `create_slack_channel`, after confirming its name and
    whether it's private.
 3. Private channels: Tightknit can only see one once someone runs `/invite @Tightknit` in it.
    Tell the admin to do that, then list the channels again.
-4. Confirm the list, then `activate_slack_channel` once per channel.
+4. Check `#announcements` is admin-only before activating it (5a).
+5. Confirm the list, then `activate_slack_channel` once per channel.
+6. Offer channel descriptions: draft a purpose and topic for each, confirm, then
+   `edit_slack_channel`.
 
 ## Step 6: Feeds and site pages
 
@@ -178,8 +197,8 @@ first thing they read.
 
 1. Re-read the state as in step 0 and show the checklist with a status for every step, plus
    the "still to do" list: deferred steps, and anything waiting on IT, design, or the team.
-2. Check the things that most often go wrong: site access (public or private) is what they
-   intended, the events page is published if there are events, at least one feed is visible,
+2. Check the things that most often go wrong: `#announcements` is admin-only, apps need admin
+   approval, site access (public or private) is what they intended, the events page is published if there are events, at least one feed is visible,
    the welcome message is on, and the journey is active if they want it live.
 3. Give the site link, the Studio link, and next steps: invite the first members, and draft a
    launch announcement with the `draft-announcement` skill.
