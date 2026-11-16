@@ -150,6 +150,104 @@
         "create_composition",
         "deliver_composition"
       ]
+    },
+    {
+      "prompt": "Add these 8 events from the attached spreadsheet to our community events page",
+      "expected_skill": "import-events",
+      "expected_tools": [
+        "list_tenants",
+        "list_events",
+        "create_event"
+      ]
+    },
+    {
+      "prompt": "Publish all the draft events I created last week to the site",
+      "expected_skill": "import-events",
+      "expected_tools": [
+        "list_events",
+        "edit_event"
+      ]
+    },
+    {
+      "prompt": "Give the Top Contributor badge to maria@example.com, dev@example.com and sam@example.com",
+      "expected_skill": "give-award",
+      "expected_tools": [
+        "list_awards",
+        "list_members",
+        "give_award"
+      ]
+    },
+    {
+      "prompt": "Who has received the Event Speaker award so far?",
+      "expected_skill": "give-award",
+      "expected_tools": [
+        "list_awards",
+        "list_award_assignments"
+      ]
+    },
+    {
+      "prompt": "Make our community site match the colors and fonts on our website",
+      "expected_skill": "brand-site",
+      "expected_tools": [
+        "get_site",
+        "list_branding_sets",
+        "create_branding_set"
+      ]
+    },
+    {
+      "prompt": "Add a banner to the top of the site announcing Community Week",
+      "expected_skill": "brand-site",
+      "expected_tools": [
+        "get_site",
+        "manage_site_banner"
+      ]
+    },
+    {
+      "prompt": "Design a new color theme for our company Slack workspace sidebar",
+      "expected_skill": null,
+      "expected_tools": []
+    },
+    {
+      "prompt": "We just installed Tightknit, can you walk me through setting up our community?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site",
+        "list_slack_channels"
+      ]
+    },
+    {
+      "prompt": "Help me get our Tightknit community ready to launch next week",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site"
+      ]
+    },
+    {
+      "prompt": "We set up branding and a couple of feeds last week. What's left to set up in our community?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site",
+        "list_feeds",
+        "list_branding_sets"
+      ]
+    },
+    {
+      "prompt": "We're moving our community from Discourse to Slack with Tightknit. Where do we start?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site"
+      ]
+    },
+    {
+      "prompt": "Connect Tightknit to Claude Code",
+      "expected_skill": "setup",
+      "expected_tools": [
+        "list_tenants"
+      ]
     }
   ]
 }

@@ -2,6 +2,20 @@
 
 All notable changes to this plugin are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the plugin follows semver.
 
+## [0.3.0] - 2026-11-16
+
+### Added
+
+- `community-setup` skill: full-service onboarding for a community. It asks whether the community is brand new, an existing Slack community, or a migration, checks what's already set up in Tightknit (and in Slack, when Slack's connector is connected), and walks the admin through the gaps with advice for their path. Includes Slack workspace basics, ready-to-send messages for the admin's IT team, design team, and Tightknit support, and a plain-language guide to every feed setting.
+- `import-events` skill: create a batch of events from a list, spreadsheet, or calendar and get them onto the community site's events page, including the events-page and scheduled-publish checks.
+- `give-award` skill: give an award to one or many members, check who already has it, and report skipped and failed recipients.
+- `brand-site` skill: site basics, images, branding sets prepared for review, published pages, the announcement banner, and the login page panel.
+- Trigger eval scenarios for the new skills.
+
+### Changed
+
+- `setup` now triggers on connecting the MCP server rather than any "set up Tightknit" request, and points new communities to `community-setup`.
+
 ## [0.2.0] - 2026-11-02
 
 ### Added

@@ -38,9 +38,13 @@ Tools are annotated read, write, or destructive, and every tool respects your St
 | Command | Description |
 | --- | --- |
 | `/tightknit:setup` | Connect and authenticate the MCP server, then verify by listing your communities |
+| `/tightknit:community-setup [step]` | Guided setup for new, existing, or migrating communities: checks what's done, then fills the gaps (Slack basics, branding, domain, channels, feeds, events, journey, welcome message) |
 | `/tightknit:community-health [community] [period]` | Engagement report for a date window, with comparison to the previous period |
 | `/tightknit:create-event <brief>` | Turn a plain-English brief into a draft event, then publish on confirmation |
 | `/tightknit:onboarding-journey <goal>` | Design and build a new-member journey with milestones and a completion award |
+| `/tightknit:import-events <list>` | Create a batch of events from a list or spreadsheet and get them onto the community site's events page |
+| `/tightknit:give-award <award> <members>` | Give an award to one or many members, skipping anyone who already has it on request |
+| `/tightknit:brand-site <brand>` | Set up the community site and prepare a branding set for review before applying it |
 | `/tightknit:unanswered-questions [community] [period]` | Find questions that still need an answer, draft replies, and mark answers on confirmation |
 | `/tightknit:member-brief <member>` | One-page brief on a member before a call: profile, activity, awards, and team notes |
 | `/tightknit:draft-announcement <brief>` | Draft a Message Blaster announcement, share it for review, and send or schedule on confirmation |

@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Connect this client to the Tightknit MCP server, authenticate with OAuth, and verify the connection by listing the user's communities. Use when the user wants to set up, connect, install, authenticate, or troubleshoot Tightknit or this plugin, when they paste the Tightknit MCP docs URL, or when any Tightknit tool call fails with an authorization, sign-in, or "no tools" error.
+description: Connect this client to the Tightknit MCP server, authenticate with OAuth, and verify the connection by listing the user's communities. Use when the user wants to connect, install, authenticate, or troubleshoot the Tightknit MCP server or this plugin, when they paste the Tightknit MCP docs URL, or when any Tightknit tool call fails with an authorization, sign-in, or "no tools" error.
 user-invocable: true
 ---
 
@@ -54,8 +54,8 @@ OAuth sign-in.
 4. **Verify and orient.** Show the communities from `list_tenants` as a table: name, the
    user's role, and whether it has a Slack workspace. If there is more than one, tell the user
    you will ask which one to use for each task, or that they can name it up front. Offer the
-   next steps: `/tightknit:community-health`, `/tightknit:create-event`,
-   `/tightknit:onboarding-journey`.
+   next steps: `/tightknit:community-setup` for a new community, `/tightknit:community-health`,
+   `/tightknit:create-event`, `/tightknit:onboarding-journey`.
 5. **Mention uploads once.** If the user will attach images (event covers, badges, logos),
    the sandbox must reach `mcp.tightknit.ai`. In Claude, that is Settings > Capabilities >
    Additional allowed domains > `*.tightknit.ai`. Say it once; do not repeat it every session.
