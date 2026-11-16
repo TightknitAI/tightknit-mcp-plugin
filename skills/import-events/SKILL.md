@@ -17,14 +17,18 @@ For one event, `create-event` is the better fit. This skill is for two or more.
 ## Steps
 
 1. **Resolve the community.** `list_tenants`; ask if there are several and none was named.
-2. **Parse the list.** Each event needs a title, a start, and an end. Read the rest if present:
+2. **Get the list.** It can be pasted text, a spreadsheet, a calendar export (.ics), or a link
+   to a public calendar page such as a Luma calendar (`lu.ma/<calendar>` or `luma.com/<calendar>`).
+   For a link, fetch the page and read the upcoming events from it; if it can't be read, ask
+   the user to paste the events instead. Remember which source they used for step 10.
+3. **Parse the list.** Each event needs a title, a start, and an end. Read the rest if present:
    description, location, video-call or registration link, hosts and speakers, tags. Ask for
    the timezone once for the whole batch if it is not stated; do not assume UTC. Send every
    time as ISO 8601 with an explicit offset. A missing end: propose 60 minutes and say so.
    Rows with a start in the past or an end before the start: list them and ask.
-3. **Check for duplicates.** `list_events` with `status: all` and compare titles and dates.
+4. **Check for duplicates.** `list_events` with `status: all` and compare titles and dates.
    Show any matches and ask whether to skip them or edit the existing events (`edit_event`).
-4. **Ask once, for the whole batch:**
+5. **Ask once, for the whole batch:**
    - **Registration.** Tightknit registration (`enable_registration_button: true`), an
      external link (`enable_registration_button: true`, `use_registration_btn_as_link: true`,
      and the URL in `link`; all three are needed), a Luma event (the Luma URL with its `evt-`
@@ -33,19 +37,29 @@ For one event, `create-event` is the better fit. This skill is for two or more.
      on publish. For a large batch or back-filled events, recommend none.
    - **Publish now, at a set time, or review first.** Default is drafts for review.
      `scheduled_publish_at` publishes a draft automatically at a future time.
-5. **Resolve references before writing.** `list_tags` for tags (an unknown tag label fails the
+6. **Resolve references before writing.** `list_tags` for tags (an unknown tag label fails the
    call), `list_members` for host and speaker `prof_...` ids (unmatched people go in
    `external_speakers`), `list_slack_channels` for channel ids.
-6. **Show the full list and wait for a yes.** A table: title, when (in the user's timezone),
+7. **Show the full list and wait for a yes.** A table: title, when (in the user's timezone),
    location or link, registration, hosts, tags, and status (draft, published, or scheduled).
-7. **Create each event.** One `create_event` per row. Omit `status` for drafts; pass
+8. **Create each event.** One `create_event` per row. Omit `status` for drafts; pass
    `status: published` only if the user asked to publish now. Leave `publish_to_site` and
    `is_unlisted` unset. Keep a running list of created ids so a retry never duplicates.
-8. **Check the events page.** `get_site`. If the events page is unpublished, say that no
+9. **Check the events page.** `get_site`. If the events page is unpublished, say that no
    event will show on the site until it is, and ask before calling `edit_site_pages` with
    `route_events_enabled: true`.
-9. **Publish drafts on a yes.** Name the Slack channels each event will announce in, then
+10. **Publish drafts on a yes.** Name the Slack channels each event will announce in, then
    `edit_event` with `status: published` for each.
+11. **Offer to keep events up to date.** Ask whether they'd like a weekly check, and set it
+    up only on a yes:
+    - **Luma calendar:** a weekly task that fetches the same calendar link, finds events not
+      yet in Tightknit (step 4's duplicate check), and asks before creating them.
+    - **Any other source:** a weekly reminder that asks the admin to paste or upload any new
+      events, then runs this skill on them.
+
+    Use the AI tool's scheduled or recurring task feature if it has one, with a prompt that
+    names the community, the source, and these steps. If it has none, say so and suggest a
+    weekly calendar reminder to run `/tightknit:import-events`.
 
 ## Output
 

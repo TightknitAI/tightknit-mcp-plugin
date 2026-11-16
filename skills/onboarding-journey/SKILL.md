@@ -23,7 +23,9 @@ limit and start tracking immediately.
    milestones in the order a new member would do them, each with a label, an action from the
    table below, a count where the action takes one, and channel scoping where it helps. Add
    the award: name, what it is (badge, frame, or both), and whether to reuse an existing one.
-   Show it as a table and ask for changes. Default proposal:
+   Show it as a table and ask for changes. Don't propose `log_in_to_forums_site` (signing in
+   to the community site): members don't need to, so it only adds friction. Use it only if
+   the admin asks for it or the community has no Slack workspace. Default proposal:
 
    | # | Label | Action | Count | Scope |
    | --- | --- | --- | --- | --- |

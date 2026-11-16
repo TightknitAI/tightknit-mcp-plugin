@@ -203,11 +203,12 @@ feed for a private channel can only be `disabled` or `feed_members`.
 ## Step 7: Events
 
 Explain: events live on the site's events page and in Slack, with registration and
-reminders. Ask the admin to paste their upcoming events in any form: a list, a spreadsheet,
-a calendar export, or a link. For a migration, past events and recordings from the old
+reminders. Ask the admin to share their upcoming events in any form: a list, a spreadsheet,
+a calendar export, or a link to a public calendar such as their Luma calendar. For a migration, past events and recordings from the old
 platform can come too. Then follow the `import-events` skill. Before launch, recommend
 drafts and no Slack announcements, since members haven't arrived yet; an existing community
-can announce right away.
+can announce right away. At the end, `import-events` offers a weekly check for new events
+(on their Luma calendar, or a reminder to paste new ones); note the choice for step 10.
 
 ## Step 8: Onboarding journey and badge
 
