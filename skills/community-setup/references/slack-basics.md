@@ -19,24 +19,33 @@ Several answers below depend on it.
   give admin rights only to the people who need them.
   https://slack.com/help/articles/201314026-Roles-and-permissions-in-Slack
 
-## 2. Keep the channel list short
+## 2. A short list of channels with distinct purposes
 
-Recommend **5 or 6 channels** to start. A new community with many quiet channels feels empty;
-a few busy ones feel alive. Add channels later when a topic keeps coming up in another one,
-and archive channels that go quiet rather than leaving them empty.
+What matters is the number of channels and what each one is for, not their names:
 
-A starter set to propose, adjusted to the community's purpose:
+- **About 5 or 6 to start.** Many quiet channels make a new community feel empty and leave
+  members unsure where to post; a few busy ones feel alive.
+- **Every channel has a real purpose** you can say in one line.
+- **No overlap.** A member should never wonder which of two channels a post belongs in. If
+  two channels do the same job (`#help` and `#questions`), merge them.
+- **Grow from use.** Add a channel when a topic keeps coming up somewhere else, and archive
+  channels that go quiet rather than leaving them empty.
 
-| Channel | For |
+Most communities start with channels for these purposes. Let the admin name them in their
+own style, and swap purposes to fit the community (product feedback or resources for a
+product community, for example):
+
+| Purpose | For |
 | --- | --- |
-| `#welcome-start-here` | First stop: community norms and how things work |
-| `#announcements` | Updates from the team, admins only |
-| `#introductions` | New members say hello (pairs with the onboarding journey) |
-| `#general` | Open conversation |
-| `#help` | Questions and support |
-| `#events` | Event announcements and discussion (optional) |
+| Getting started | Community norms and how things work |
+| Announcements | Updates from the team, admins only |
+| Introductions | New members say hello (pairs with the onboarding journey) |
+| Open conversation | Anything that doesn't fit elsewhere |
+| Questions and help | Support from the team and other members |
+| Events (optional) | Event announcements and discussion |
 
-For a product community, `#product-feedback` or `#resources` can replace `#events`.
+When reviewing an existing channel list, check each channel against these principles and
+suggest merges or archives for overlaps and channels without a purpose.
 
 ## 3. The workspace-wide channel and admin-only announcements
 
@@ -44,12 +53,14 @@ Every workspace has one workspace-wide channel (`#general`, or `#all-<workspace>
 workspaces). Every member is added to it and can't leave. It can be renamed but not archived
 or made private.
 
-Members should read `#announcements`, not post in it. Posting permissions are set in the
+Members should read the announcements channel, not post in it. Posting permissions are set in the
 channel: click its name, open the **Settings** tab, then **Posting permissions**.
 https://slack.com/help/articles/360004635551
 
-**Free and Pro plans: only one channel can have restricted posting.** Business+ and
-Enterprise can restrict any channel. On Free or Pro, recommend:
+**Free plan: only one channel can have restricted posting.** On Pro, Slack says there are
+some limits but doesn't say what they are, so ask the admin to check in their workspace and
+plan as if it were one channel until they've confirmed. Business+ and Enterprise can restrict
+any channel. Where only one channel can be restricted, recommend:
 
 - Rename the workspace-wide channel to `#announcements` and set posting to admins only,
   **before inviting anyone**. Members are all in it automatically, so nobody misses an update.
@@ -70,7 +81,7 @@ Owners). https://slack.com/help/articles/222386767
 Settings live under **Admin > Workspace settings**:
 
 - **Channel creation:** a Workspace Owner limits it under **Roles & permissions > Account
-  types** (Create public channels, Create private channels), so the list stays at 5 or 6.
+  types** (Create public channels, Create private channels), so the channel list stays short.
   https://slack.com/help/articles/115004988303
 - **Inviting people:** under **Permissions > Invitations**, turn on **Require admin
   approval** for an invite-only or customer community; leave it open for an open one.
@@ -84,7 +95,7 @@ Also decide how people join: an invite link, approved email domains, or requests
 ## 6. Default channels
 
 **Admin > Workspace settings > Default Channels.** New members are added to these when they join.
-Set at least `#welcome-start-here`, `#introductions`, and `#help` (the workspace-wide
+Set at least the getting-started, introductions, and help channels (the workspace-wide
 channel is automatic). https://slack.com/help/articles/201898998
 
 - Only public channels can be defaults, and guests aren't added to them.
@@ -112,7 +123,7 @@ ones you won't show on the site as feeds.
 
 - Members see only the last 90 days of messages, and data older than one year is deleted.
   Posts synced to the community site from activated channels stay on the site.
-- One restricted posting channel (section 3).
+- Only one channel with restricted posting (section 3).
 - Up to 10 apps, Tightknit included.
 - No workflows, guests, user groups, or new canvases and lists; huddles are one-on-one.
 - Basic Slack analytics only. Tightknit's analytics cover activated channels on any plan.

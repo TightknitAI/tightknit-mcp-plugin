@@ -1,23 +1,34 @@
 ---
 name: community-setup
-description: Walk a new Tightknit admin through setting up their community end to end, one step at a time, asking questions as it goes. Covers Slack workspace basics (a short channel list, admin-only announcements, app install permissions), branding, graphics and a custom domain (with ready-to-send messages for their IT and design teams), activating Slack channels, feeds and what every feed setting does, importing events, an onboarding journey and badge, the welcome message, and a final launch check. Use when the user says "set up Tightknit", "help me set up our community", "walk me through setup", "we just installed Tightknit", "get our community ready to launch", or "onboard me to Tightknit". To connect or authenticate the MCP server itself, use setup instead.
+description: Full-service onboarding for a Tightknit community. Finds out what kind of community the admin is setting up (brand new, an existing Slack community, or a migration from another platform), checks what's already set up in Tightknit and Slack, then walks them through only the gaps, one step at a time, with advice for their situation. Covers Slack workspace basics, branding, graphics and a custom domain (with messages for IT and design teams), channels and feeds, events, an onboarding journey and badge, the welcome message, and a launch check. Use when the user says "set up Tightknit", "help me set up our community", "walk me through setup", "we just installed Tightknit", "finish setting up our community", "what's left to set up", "get our community ready to launch", "we're moving our community to Slack", or "onboard me to Tightknit". To connect or authenticate the MCP server itself, use setup instead.
 argument-hint: "[optional: the step to start or resume at, e.g. feeds]"
 user-invocable: true
 ---
 
 # Set up a Tightknit community
 
-Guide the admin through a basic Tightknit setup as a conversation. Ask, explain, propose,
-confirm, then write. They may be new to Tightknit, so explain each step in one or two
-sentences before asking about it, using Tightknit's words (community, member, feed, journey).
+Act as the admin's onboarding specialist. Find out where they're starting from, see what's
+already done, and walk them through what's missing as a conversation: ask, explain, propose,
+confirm, then write. Many admins arrive halfway through setup, so never assume a blank
+community and never redo work they've already done. They may be new to Tightknit, so explain
+each step in one or two sentences before asking about it, using Tightknit's words
+(community, member, feed, journey).
 
 ## How to run it
 
 - **Connected first.** If `list_tenants` is unavailable or fails, run `setup` and come back.
+- **Context first, then gaps.** Step 0 builds a picture of what's done. Each later step starts
+  by saying what's already in place ("You already have a branding set called Acme, live since
+  March"), asks whether to change anything, and only then works on what's missing. A step
+  that's fully done is offered as a quick review, not repeated.
+- **Re-check before writing.** The admin may change things in Studio or Slack while you talk.
+  Re-read the relevant settings at the start of each step rather than trusting step 0.
+- **Fit the advice to their path.** Use the tips for their community type from
+  [references/community-paths.md](references/community-paths.md) at the steps it names.
 - **One step at a time.** Finish or skip a step before starting the next. Never ask more
   than three questions in one message.
-- **Show progress.** Start each step with the checklist below, marking done, skipped, and
-  waiting-on-someone steps. Resume at `$ARGUMENTS` if a step was named.
+- **Show progress.** Start each step with the checklist below, marking done, partly done,
+  skipped, and waiting-on-someone steps. Resume at `$ARGUMENTS` if a step was named.
 - **Skippable.** Every step can be skipped or deferred. A deferred step goes on the
   "still to do" list in the final summary.
 - **Confirm before every write**, as the `community-manager` rules say. Nothing goes to Slack,
@@ -25,7 +36,8 @@ sentences before asking about it, using Tightknit's words (community, member, fe
 - **Delegate.** Where a step names another skill, follow that skill's steps instead of
   improvising, then come back here.
 - **Long-lead items early.** A custom domain needs Tightknit support and the admin's IT team,
-  so raise it in step 3 even if everything else is still open.
+  and a migration needs an export from the old platform, so raise both in the first session
+  even if everything else is still open.
 
 Checklist to show:
 
@@ -37,13 +49,38 @@ Checklist to show:
 5. Slack and channels    10. Launch check
 ```
 
-## Step 0: see what's already done
+## Step 0: get your bearings
 
-Resolve the community with `list_tenants` (ask if there are several), then read the current
-state in one pass: `get_site`, `get_slack_community_settings`, `list_slack_channels`,
-`list_feeds`, `list_branding_sets`, `list_journeys`, `list_events`,
-`get_community_onboarding_settings`, `get_teammate_email_domains`. Mark steps that are
-already done and say so, then ask whether to start at the first open step.
+1. **Which community.** Resolve it with `list_tenants` (ask if there are several).
+2. **What kind of community.** Ask which describes them, and keep the answer for the rest of
+   the session:
+   - **Brand new:** a new community and a new Slack workspace.
+   - **Existing Slack community:** members already talk in a Slack workspace that didn't have
+     Tightknit (or has only just installed it).
+   - **Migration:** moving a community from another platform (Circle, Discourse, Discord,
+     Hivebrite, Higher Logic, or similar) into Slack and Tightknit.
+
+   Also ask, if you can't tell yet: who the community is for, what it's mainly for (support,
+   learning, networking, feedback, events), and how people will join (anyone, invite only, or
+   by application).
+3. **Read Tightknit's state** in one pass: `get_site`, `get_slack_community_settings`,
+   `list_slack_channels`, `list_feeds`, `list_branding_sets`, `list_journeys`, `list_awards`,
+   `list_events`, `get_community_onboarding_settings`, `get_teammate_email_domains`,
+   `get_team_notification_settings`.
+4. **Offer to look at Slack too.** If tools from Slack's own connector are available (for
+   example ones that search messages or read channels), use them, read-only, to see what's
+   happening: which channels are busy or quiet, overlapping channels, what the workspace-wide
+   channel is used for, and whether members are already introducing themselves. If they
+   aren't available, suggest connecting it: "If you add Slack's connector for your community
+   workspace in your AI tool's connector settings, I can see your channels and recent
+   activity and give more specific advice. Want to do that now, or carry on without it?"
+   Never post, react, or message anyone through it.
+5. **Report the gaps.** Show the checklist with each step marked done, partly done, or not
+   started, with one line of evidence each (for example "Feeds: 4 exist, all hidden from the
+   site"). List anything that looks wrong as well as missing (a public feed on a private
+   channel, an announcements channel anyone can post in, a welcome message that's off).
+   Then propose an order, gaps first, starting with the path's priorities from
+   community-paths.md, and ask where to begin.
 
 ## Step 1: Community basics
 
@@ -110,10 +147,12 @@ through and they tick each one off.
 
 Ask which Slack plan they're on, then go through
 [references/slack-basics.md](references/slack-basics.md) in order: workspace name and roles,
-keep to 5 or 6 channels, make `#announcements` admin-only (on Free and Pro, only one channel
-can be restricted, so it's usually the renamed workspace-wide channel), only admins can
-install apps, who can invite people and create channels, default channels, and channel
-descriptions. Skip the security section unless the community is for customers or partners.
+a short list of channels that each have a distinct purpose, an admin-only announcements
+channel (on Free, only one channel can be restricted, so it's usually the renamed
+workspace-wide channel), only admins can install apps, who can invite people and create
+channels, default channels, and channel descriptions. Skip the security section unless the
+community is for customers or partners. Where the Slack connector is connected or the
+channel list shows it, mark items that are clearly already done and only ask about the rest.
 Track each as done or skipped for the launch check.
 
 ### 5b. Activate channels
@@ -125,17 +164,22 @@ second one if its feed is later made public. Mention this before activating so t
 surprised.
 
 1. `list_slack_channels`. Show public channels with `is_activated` and a one-line purpose
-   where visible. Activate every channel they want analytics or journey credit for, even
-   ones that won't be shown on the site. Recommend 5 or 6 starter channels (the set in slack-basics.md, adjusted to
-   the community) and ask which to activate. If they already have many, suggest which to
-   archive or merge in Slack rather than activating everything.
-2. Missing a channel they want? Offer `create_slack_channel`, after confirming its name and
+   where visible, plus how busy each is if the Slack connector is connected.
+2. Review the channel list against the principles in slack-basics.md section 2: about 5 or
+   6 channels, each with a real purpose, none overlapping. Point out overlaps ("#help and
+   #questions do the same job") and channels with no clear purpose, and suggest merging or
+   archiving them in Slack. For an existing community, suggest changes gently and leave
+   busy channels alone; see community-paths.md.
+3. Ask which to activate. Activate every channel they want analytics or journey credit for,
+   even ones that won't be shown on the site.
+4. Missing a channel they want? Offer `create_slack_channel`, after confirming its name and
    whether it's private.
-3. Private channels: Tightknit can only see one once someone runs `/invite @Tightknit` in it.
+5. Private channels: Tightknit can only see one once someone runs `/invite @Tightknit` in it.
    Tell the admin to do that, then list the channels again.
-4. Check `#announcements` is admin-only before activating it (5a).
-5. Confirm the list, then `activate_slack_channel` once per channel.
-6. Offer channel descriptions: draft a purpose and topic for each, confirm, then
+6. Check the announcements channel is admin-only before activating it (5a). For an existing
+   community, make sure members have been told about Tightknit first (community-paths.md).
+7. Confirm the list, then `activate_slack_channel` once per channel.
+8. Offer channel descriptions: draft a purpose and topic for each, confirm, then
    `edit_slack_channel`.
 
 ## Step 6: Feeds and site pages
@@ -160,8 +204,10 @@ feed for a private channel can only be `disabled` or `feed_members`.
 
 Explain: events live on the site's events page and in Slack, with registration and
 reminders. Ask the admin to paste their upcoming events in any form: a list, a spreadsheet,
-a calendar export, or a link. Then follow the `import-events` skill. Recommend drafts and no
-Slack announcements for this first batch, since members haven't arrived yet.
+a calendar export, or a link. For a migration, past events and recordings from the old
+platform can come too. Then follow the `import-events` skill. Before launch, recommend
+drafts and no Slack announcements, since members haven't arrived yet; an existing community
+can announce right away.
 
 ## Step 8: Onboarding journey and badge
 
@@ -204,15 +250,16 @@ first thing they read.
 
 1. Re-read the state as in step 0 and show the checklist with a status for every step, plus
    the "still to do" list: deferred steps, and anything waiting on IT, design, or the team.
-2. Check the things that most often go wrong: `#announcements` is admin-only, apps need admin
-   approval, site access (public or private) is what they intended, the events page is published if there are events, at least one feed is visible,
-   the welcome message is on, and the journey is active if they want it live.
-3. Before members arrive: pick 3 to 5 champions who will start conversations, and a pilot
-   group of 10 to 20 members to test joining and send feedback. Seed each core channel with a
-   useful post or question so nobody arrives in an empty community.
+2. Check the things that most often go wrong: the announcements channel is admin-only, apps
+   need admin approval, site access (public or private) is what they intended, the events
+   page is published if there are events, at least one feed is visible, the welcome message
+   is on and names default channels, and the journey is active if they want it live.
+3. Run the launch items for their path from community-paths.md: champions, a pilot group,
+   and seeded channels for a new community; the member announcement and privacy review for
+   an existing one; the cut-over date, redirects, and member invitations for a migration.
 4. Give the site link, the Studio link, and next steps: invite members in small waves so the
-   team can welcome each one, and draft a launch announcement with the `draft-announcement`
-   skill.
+   team can welcome each one, and draft the launch announcement with the `draft-announcement`
+   skill, starting from the template in community-paths.md.
 
 ## Edge cases
 
@@ -222,6 +269,9 @@ first thing they read.
   include it. Say which, skip that part, and add it to "still to do".
 - **Plan-gated settings** (site posting, custom AI prompts, some visibility tiers, groups):
   explain what the setting does, say it depends on the plan, and move on if refused.
+- **Admin picks a step that depends on an unfinished one** (feeds before any channel is
+  activated, a journey that names a channel that doesn't exist): say what's missing and offer
+  to do that first.
 - **Partial session:** if the admin stops, summarize what's done and what's left, and tell
   them to run `/tightknit:community-setup <step>` to resume.
 

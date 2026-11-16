@@ -225,6 +225,24 @@
       ]
     },
     {
+      "prompt": "We set up branding and a couple of feeds last week. What's left to set up in our community?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site",
+        "list_feeds",
+        "list_branding_sets"
+      ]
+    },
+    {
+      "prompt": "We're moving our community from Discourse to Slack with Tightknit. Where do we start?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site"
+      ]
+    },
+    {
       "prompt": "Connect Tightknit to Claude Code",
       "expected_skill": "setup",
       "expected_tools": [
