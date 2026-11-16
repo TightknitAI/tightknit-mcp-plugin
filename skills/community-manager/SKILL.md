@@ -120,6 +120,7 @@ Every id is opaque: take it from a listing tool, never construct one.
 ## Related skills
 
 - `setup`: connect and authenticate the MCP server, troubleshoot access.
+- `community-setup`: guided first-time setup of a whole community, step by step.
 - `community-health`: engagement report for a date window.
 - `create-event`: brief to published calendar event.
 - `onboarding-journey`: milestones plus a completion award for new members.

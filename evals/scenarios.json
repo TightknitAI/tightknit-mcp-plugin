@@ -206,6 +206,30 @@
       "prompt": "Design a new color theme for our company Slack workspace sidebar",
       "expected_skill": null,
       "expected_tools": []
+    },
+    {
+      "prompt": "We just installed Tightknit, can you walk me through setting up our community?",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site",
+        "list_slack_channels"
+      ]
+    },
+    {
+      "prompt": "Help me get our Tightknit community ready to launch next week",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_tenants",
+        "get_site"
+      ]
+    },
+    {
+      "prompt": "Connect Tightknit to Claude Code",
+      "expected_skill": "setup",
+      "expected_tools": [
+        "list_tenants"
+      ]
     }
   ]
 }

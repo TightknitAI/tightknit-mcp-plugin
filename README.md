@@ -38,6 +38,7 @@ Tools are annotated read, write, or destructive, and every tool respects your St
 | Command | Description |
 | --- | --- |
 | `/tightknit:setup` | Connect and authenticate the MCP server, then verify by listing your communities |
+| `/tightknit:community-setup [step]` | Guided first-time setup: branding, graphics and custom domain, channels, feeds, events, onboarding journey, and welcome message |
 | `/tightknit:community-health [community] [period]` | Engagement report for a date window, with comparison to the previous period |
 | `/tightknit:create-event <brief>` | Turn a plain-English brief into a draft event, then publish on confirmation |
 | `/tightknit:onboarding-journey <goal>` | Design and build a new-member journey with milestones and a completion award |
