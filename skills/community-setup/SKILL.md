@@ -109,11 +109,12 @@ changed in Slack by a workspace Owner or Admin, not through Tightknit, so you wa
 through and they tick each one off.
 
 Ask which Slack plan they're on, then go through
-[references/slack-basics.md](references/slack-basics.md) in order: keep to 5 or 6 channels,
-make `#announcements` admin-only (on Free, only one channel can be restricted), only admins
-can install apps, who can invite people, who can create channels, default channels, and
-channel descriptions. Skip the security section unless the community is for customers or
-partners. Track each as done or skipped for the launch check.
+[references/slack-basics.md](references/slack-basics.md) in order: workspace name and roles,
+keep to 5 or 6 channels, make `#announcements` admin-only (on Free and Pro, only one channel
+can be restricted, so it's usually the renamed workspace-wide channel), only admins can
+install apps, who can invite people and create channels, default channels, and channel
+descriptions. Skip the security section unless the community is for customers or partners.
+Track each as done or skipped for the launch check.
 
 ### 5b. Activate channels
 
@@ -124,7 +125,8 @@ second one if its feed is later made public. Mention this before activating so t
 surprised.
 
 1. `list_slack_channels`. Show public channels with `is_activated` and a one-line purpose
-   where visible. Recommend 5 or 6 starter channels (the set in slack-basics.md, adjusted to
+   where visible. Activate every channel they want analytics or journey credit for, even
+   ones that won't be shown on the site. Recommend 5 or 6 starter channels (the set in slack-basics.md, adjusted to
    the community) and ask which to activate. If they already have many, suggest which to
    archive or merge in Slack rather than activating everything.
 2. Missing a channel they want? Offer `create_slack_channel`, after confirming its name and
@@ -184,14 +186,19 @@ first thing they read.
 
 1. `get_community_onboarding_settings`. Draft a welcome message of under 120 words: greet them
    with `{{recipient.first_name}}`, say what the community is for, name two or three channels
-   to start in, mention the journey and its badge from step 8, and link the site. Match the
+   to start in (they must be default channels), give one first action such as introducing
+   themselves, mention the journey and its badge from step 8, link the site, and say they
+   can reply to reach a real person. Match the
    admin's tone. Show it and revise until they're happy.
-2. Ask how long after joining to send it. The options are 0, 1, 2, 5, 30, 60, 180, or 1440
+2. Ask who it should come from: the Tightknit bot, or a named teammate (a real person gets
+   more replies). Set the teammate with `welcome_message_sender_member_id`. Ask how long
+   after joining to send it. The options are 0, 1, 2, 5, 30, 60, 180, or 1440
    minutes; recommend 5.
 3. Ask for community guidelines: their own text, a link, or a short draft from you (be kind,
    stay on topic, no selling, use threads). Offer a link to the site's guidelines page.
 4. Confirm, then `edit_community_onboarding_settings` with `welcome_message`,
-   `welcome_message_enabled: true`, `welcome_message_delay_mins`, and the guidelines.
+   `welcome_message_enabled: true`, `welcome_message_delay_mins`, the sender, and the
+   guidelines.
 
 ## Step 10: Launch check
 
@@ -200,8 +207,12 @@ first thing they read.
 2. Check the things that most often go wrong: `#announcements` is admin-only, apps need admin
    approval, site access (public or private) is what they intended, the events page is published if there are events, at least one feed is visible,
    the welcome message is on, and the journey is active if they want it live.
-3. Give the site link, the Studio link, and next steps: invite the first members, and draft a
-   launch announcement with the `draft-announcement` skill.
+3. Before members arrive: pick 3 to 5 champions who will start conversations, and a pilot
+   group of 10 to 20 members to test joining and send feedback. Seed each core channel with a
+   useful post or question so nobody arrives in an empty community.
+4. Give the site link, the Studio link, and next steps: invite members in small waves so the
+   team can welcome each one, and draft a launch announcement with the `draft-announcement`
+   skill.
 
 ## Edge cases
 
