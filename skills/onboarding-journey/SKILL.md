@@ -1,6 +1,6 @@
 ---
 name: onboarding-journey
-description: Design and build a member onboarding journey in a Tightknit community, with milestones such as joining, adding a profile photo, a first post in an introductions channel, reacting and replying, registering for an event, and a completion award like a badge or profile frame. Use when the user asks to set up onboarding, a welcome or getting-started journey, a new-member checklist, gamification, milestones, or a badge members earn for getting active.
+description: Design and build a member onboarding journey in a Tightknit community, with milestones such as joining, adding a profile photo, a first post in an introductions channel, reacting and replying, registering for an event, and a completion award like a badge or profile frame. Also builds any other engagement journey, such as a time-boxed campaign. Use when the user asks to set up onboarding, a welcome or getting-started journey, a new-member checklist, gamification, a journey, milestones, or a badge members earn for getting active. To give an award to members directly, use give-award instead.
 argument-hint: "[goal for new members, e.g. get active in the first two weeks]"
 user-invocable: true
 ---
@@ -47,8 +47,10 @@ limit and start tracking immediately.
    time-boxed campaign.
 6. **Add milestones in order.** One `add_milestone` per row, in sequence, with
    `journey_id`, `label`, `action`, and `multiplier` for count-based actions.
-   `slack_channel_id` scopes an action to one channel; `scoped_to_emoji_name` scopes a
-   reaction action to one emoji. Stop at 10.
+   `slack_channel_ids` (from `list_slack_channels`) scopes a channel action to those
+   channels; more than one channel needs the Enterprise plan, and `join_slack_channel` needs
+   at least one. Pass `[]` for any channel. `scoped_to_emoji_name` scopes a reaction action
+   to one emoji. Stop at 10.
 7. **Review.** `get_journey` and show the ordered milestones and award. Fix anything with
    `edit_milestone` or `edit_journey`.
 8. **Activate on a yes.** Say that activation counts against the plan's active-journey
@@ -65,6 +67,7 @@ limit and start tracking immediately.
 | `join_workspace` | joined the Slack workspace | no | |
 | `update_slack_profile_photo` | set a profile photo | no | |
 | `log_in_to_forums_site` | signed in to the community site | no | |
+| `join_slack_channel` | joined a specific channel | no | channel (required) |
 | `send_post_in_channel` | posted a parent message | yes | channel |
 | `send_message_in_channel_not_to_self` | posted, excluding self-threads | yes | channel |
 | `send_reply_in_channel_not_to_self` | replied in someone else's thread | yes | channel |
@@ -73,9 +76,18 @@ limit and start tracking immediately.
 | `num_msgs_reacted_to_not_to_self` | distinct messages reacted to | yes | channel, emoji |
 | `num_msgs_that_received_react_not_from_self` | own messages that got a reaction | yes | channel, emoji |
 | `num_polls_voted_in` | polls voted in | yes | |
+| `num_replies_selected_as_answer_not_from_self` | replies marked as the answer by someone else | yes | |
 | `register_for_event` | registered for any event | no | |
 
 ## Edge cases
+
+- **Members aren't progressing:** the journey is still inactive, or its `start_date` and
+  `end_date` window excludes today.
+- **Editing an active journey:** `edit_milestone` replaces the milestone's whole definition,
+  so any count, channel, or emoji you leave out is cleared. Send the full definition, and
+  send back the `slack_channel_scope` that `get_journey` returned. New criteria apply at
+  once and members can lose progress in flight, so warn the user before editing an active
+  journey.
 
 - **No Slack workspace on the tenant:** most actions are Slack-based. Keep to
   `log_in_to_forums_site`, `register_for_event`, and `num_polls_voted_in`, and say why.

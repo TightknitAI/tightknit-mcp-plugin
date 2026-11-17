@@ -71,6 +71,9 @@ the Studio link for drafts. Then list anything skipped or failed, with the reaso
 
 - **Event created but not on the site:** it is still a draft, it is unlisted, `publish_to_site`
   is false, or the site's events page is unpublished. Check all four before anything else.
+- **Luma warning:** if a `create_event` response carries `luma_link_warning`, the Luma link
+  is missing its event id. Ask the user for the full Luma event URL (with `evt-`) and fix
+  `link` with `edit_event`.
 - **Wrong hour:** a timestamp without the user's offset. Compare with the source and fix with
   `edit_event`.
 - **Rate limit partway through:** writes are capped at 60 a minute. Wait a minute, check

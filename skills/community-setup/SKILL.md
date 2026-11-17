@@ -179,8 +179,10 @@ surprised.
 6. Check the announcements channel is admin-only before activating it (5a). For an existing
    community, make sure members have been told about Tightknit first (community-paths.md).
 7. Confirm the list, then `activate_slack_channel` once per channel.
-8. Offer channel descriptions: draft a purpose and topic for each, confirm, then
-   `edit_slack_channel`.
+8. Offer channel topics (the line in each channel's Slack header): draft one per channel,
+   confirm, then `edit_slack_channel` with `topic`, one call at a time. Each call posts a
+   line in that channel. Descriptions come in step 6, because they are also the feeds'
+   descriptions on the site.
 
 ## Step 6: Feeds and site pages
 
@@ -192,11 +194,20 @@ feed for a private channel can only be `disabled` or `feed_members`.
    [references/feed-settings.md](references/feed-settings.md), in plain language, starting with
    visibility. Offer the recommended defaults for that feed's purpose (announcements, Q&A,
    discussion) so the admin can just say yes.
-2. Ask whether they want any site-only feeds (a blog or changelog with no Slack channel). If
+2. **Descriptions.** A feed's description on the community site is its Slack channel's
+   purpose, so set it there; `update_feed` has no description field. Draft a one-sentence
+   description for every feed that has a channel (`list_feeds` shows each feed's channel;
+   it is null for a site-only feed), show them all as one table, and confirm. Warn that
+   each change posts a line in that Slack channel saying the description was changed, so
+   members will see it. Then call `edit_slack_channel` with `channel_id` and `purpose`,
+   one channel at a time, never in parallel. Keep each under 250 characters, in Slack
+   mrkdwn. Slack may rewrite or shorten it, so report the `purpose` each call returns.
+   Site-only feeds have no channel, so say their descriptions can't be set this way.
+3. Ask whether they want any site-only feeds (a blog or changelog with no Slack channel). If
    so, `create_feed`.
-3. Summarize every feed's settings as a table, confirm, then `update_feed` once per feed with
+4. Summarize every feed's settings as a table, confirm, then `update_feed` once per feed with
    only the fields that change.
-4. Pages: explain which site pages exist (home, events, members, content library, groups,
+5. Pages: explain which site pages exist (home, events, members, content library, groups,
    guidelines). Ask which to publish, and set them with `edit_site_pages`. Offer custom
    navigation links with `edit_site_navigation_custom_links`.
 
