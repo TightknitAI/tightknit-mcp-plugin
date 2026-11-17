@@ -30,6 +30,7 @@ can appear publicly on the site. Mention it before confirming.
 | Field | Explain it as | Default |
 | --- | --- | --- |
 | `label` | The feed's name on the site. | The channel name, tidied (e.g. "Help & questions"). |
+| Description (not an `update_feed` field) | The line under the feed's name on the site. It is the Slack channel's purpose, set with `edit_slack_channel` `purpose`, one channel at a time. Each change posts a line in the channel. | One plain sentence on what the channel is for. |
 | `slug` | The feed's web address, e.g. `/help`. Must be unique. | Short and lowercase. |
 | `emoji_icon` | An emoji shown next to the feed name. | One that fits the purpose. |
 | `banner_file_id` | A banner at the top of the feed, 2560 x 640 px. | Optional; see graphics.md. |

@@ -15,6 +15,10 @@ All notable changes to this plugin are recorded here. The format follows [Keep a
 ### Changed
 
 - `setup` now triggers on connecting the MCP server rather than any "set up Tightknit" request, and points new communities to `community-setup`.
+- The three skills from the retired `TightknitAI/tightknit-skills` plugin now live here, so there is one Tightknit plugin: events in `import-events`, journeys in `onboarding-journey`, awards in `give-award`, and site setup and branding in `brand-site`.
+- `community-setup` sets every feed's site description through its Slack channel's purpose with `edit_slack_channel`, one channel at a time, and warns that each change posts a line in the channel.
+- `onboarding-journey` covers any engagement journey, adds the `join_slack_channel` and selected-answer milestone actions, scopes channels with `slack_channel_ids`, and warns before editing an active journey.
+- `import-events` handles the Luma link warning.
 
 ## [0.2.0] - 2026-11-02
 

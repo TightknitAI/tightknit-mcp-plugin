@@ -28,8 +28,9 @@ the single source; every directory below points back at it.
 - [ ] Decide whether the server should log a consumer header (PostHog sends
   `x-posthog-mcp-consumer: plugin`, Figma a bundle version). OpenAI's public submission rejects
   non-empty `headers`, so this would apply to `.mcp.json` only.
-- [ ] Merge the skills from `TightknitAI/tightknit-skills` (events, journeys and awards, site
-  setup and branding) here, and archive that repo, so there is one source.
+- [x] Merge the skills from `TightknitAI/tightknit-skills` (events, journeys and awards, site
+  setup and branding) here.
+- [ ] Archive `TightknitAI/tightknit-skills` once 0.3.0 is on `main`, so there is one source.
 - [ ] Tag `v0.2.0`.
 
 ## Claude (claude.ai, Cowork, Claude Code)

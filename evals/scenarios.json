@@ -248,6 +248,23 @@
       "expected_tools": [
         "list_tenants"
       ]
+    },
+    {
+      "prompt": "Give every feed on our community site a short description",
+      "expected_skill": "community-setup",
+      "expected_tools": [
+        "list_feeds",
+        "edit_slack_channel"
+      ]
+    },
+    {
+      "prompt": "Add a milestone to our onboarding journey for joining #introductions",
+      "expected_skill": "onboarding-journey",
+      "expected_tools": [
+        "list_journeys",
+        "list_slack_channels",
+        "add_milestone"
+      ]
     }
   ]
 }

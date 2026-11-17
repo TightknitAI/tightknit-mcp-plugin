@@ -52,6 +52,8 @@ the Studio branding page for anything to fine-tune by eye.
   `edit_slack_community_settings`, not the site name.
 - **Plan-gated features:** the login panel and uploaded custom fonts need a plan that
   includes them. A missing tool or field usually means the plan, not a bug.
+- **Feed descriptions:** they come from each feed's Slack channel purpose, not from the
+  site settings. `community-setup` step 6 sets them.
 - **Banner text refused:** lists, headings, and quotes aren't allowed; keep it to one line.
 
 Full walkthrough: https://docs.tightknit.ai/integrations/mcp/site-setup-and-branding
